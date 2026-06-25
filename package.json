@@ -1,15 +1,11 @@
 {
-  "name": "node-nginx-multistage-app",
+  "name": "node-multistage-app",
   "version": "1.0.0",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "test": "echo \"No tests defined\""
+    "start": "node server.js",
+    "test": "echo \"no tests\""
   },
   "dependencies": {
-    "vue": "^3.4.0"
-  },
-  "devDependencies": {
-    "vite": "^5.0.0"
+    "express": "^4.19.2"
   }
 }
