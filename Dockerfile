@@ -1,37 +1,40 @@
 # =====================
 # Stage 1: Build
 # =====================
-FROM node:22 AS build
+
+FROM node:22 AS builder
+
 
 WORKDIR /app
 
+
 COPY package*.json ./
+
+
 RUN npm install
+
 
 COPY . .
 
-RUN npm run build
 
+RUN npm run test
 
-# =====================
-# Stage 2: Test
-# =====================
-FROM node:22 AS test
-
-WORKDIR /app
-
-COPY --from=build /app .
-
-RUN npm test
 
 
 # =====================
-# Stage 3: Runtime (Nginx)
+# Stage 2: Production
 # =====================
+
 FROM nginx:alpine
 
-COPY --from=build /app/dist /usr/share/nginx/html
+
+COPY --from=builder \
+/app/public \
+/usr/share/nginx/html
+
+
 
 EXPOSE 80
 
-CMD ["nginx", "-g", "daemon off;"]
+
+CMD ["nginx","-g","daemon off;"]
