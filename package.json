@@ -1,0 +1,19 @@
+{
+  "name": "node-multistage-app",
+  "version": "1.0.0",
+
+  "scripts": {
+
+    "start": "node server.js",
+
+    "test": "echo Test successful"
+
+  },
+
+  "dependencies": {
+
+    "express": "^4.19.2"
+
+  }
+
+}
